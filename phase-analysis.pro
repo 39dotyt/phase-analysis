@@ -24,11 +24,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     phasegraph.cpp \
     graph.cpp \
-    changesgraph.cpp
+    changesgraph.cpp \
+    phasegraphwidget.cpp
 
 HEADERS  += mainwindow.h \
     phasegraph.h \
     graph.h \
-    changesgraph.h
+    changesgraph.h \
+    phasegraphwidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    phasegraphwidget.ui

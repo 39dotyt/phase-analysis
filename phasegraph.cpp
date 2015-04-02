@@ -7,9 +7,6 @@ PhaseGraph::PhaseGraph(QWidget* parent)
       drawCenter_(true) {
 }
 
-PhaseGraph::~PhaseGraph() {
-}
-
 void PhaseGraph::draw(const std::vector<qreal>& data) {
   std::vector<QPointF> points;
   for (std::size_t i = 0; i < data.size() - 1; ++i) {

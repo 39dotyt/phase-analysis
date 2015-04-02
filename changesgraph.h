@@ -6,7 +6,6 @@
 class ChangesGraph : public Graph {
  public:
   explicit ChangesGraph(QWidget* parent = 0);
-  ~ChangesGraph();
   void draw(const std::vector<qreal>& data);
   qreal max();
   qreal min();

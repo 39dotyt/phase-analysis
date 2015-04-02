@@ -5,9 +5,6 @@ ChangesGraph::ChangesGraph(QWidget* parent)
     : Graph(parent) {
 }
 
-ChangesGraph::~ChangesGraph() {
-}
-
 void ChangesGraph::draw(const std::vector<qreal>& data) {
   std::vector<QPointF> points;
   max_ = data[0];

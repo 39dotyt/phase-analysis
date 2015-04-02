@@ -6,7 +6,6 @@
 class Graph : public QGraphicsView {
  public:
   explicit Graph(QWidget* parent = 0);
-  ~Graph();
   void draw(const std::vector<QPointF>& graph, bool drawHLines = false);
  protected:
   virtual void resizeEvent(QResizeEvent* event);

@@ -9,9 +9,6 @@ Graph::Graph(QWidget* parent)
   setMinimumWidth(3 * OFFSET);
 }
 
-Graph::~Graph() {
-}
-
 void Graph::draw(const std::vector<QPointF>& graph, bool drawHLines) {
   points_ = graph;
   drawHLines_ = drawHLines;

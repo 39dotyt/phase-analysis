@@ -6,7 +6,6 @@
 class PhaseGraph : public Graph {
  public:
   explicit PhaseGraph(QWidget* parent = 0);
-  ~PhaseGraph();
   void draw(const std::vector<qreal>& data);
   qreal max();
   qreal min();
@@ -16,7 +15,7 @@ class PhaseGraph : public Graph {
   void drawBorders(bool draw = true);
   void drawCenter(bool draw = true);
  protected:
-  void onRedraw(QGraphicsScene *scene);
+  void onRedraw(QGraphicsScene* scene);
  private:
   using Graph::draw;
   qreal max_;
