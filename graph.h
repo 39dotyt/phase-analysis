@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <QGraphicsView>
+#include <QTimer>
 
 class Graph : public QGraphicsView {
  public:
@@ -23,6 +24,7 @@ class Graph : public QGraphicsView {
  private:
   static qreal calculateRealStep_(const qreal& step);
   void drawAxis_(QGraphicsScene* scene);
+  QTimer redrawTimer_;
   std::vector<QPointF> points_;
 };
 

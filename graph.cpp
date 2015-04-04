@@ -7,6 +7,9 @@ Graph::Graph(QWidget* parent)
     : QGraphicsView(parent) {
   setMinimumHeight(3 * OFFSET);
   setMinimumWidth(3 * OFFSET);
+  redrawTimer_.setSingleShot(true);
+  redrawTimer_.setInterval(250);
+  QObject::connect(&redrawTimer_, &QTimer::timeout, this, &Graph::redraw);
 }
 
 void Graph::draw(const std::vector<QPointF>& graph, bool drawHLines) {
@@ -33,7 +36,7 @@ void Graph::draw(const std::vector<QPointF>& graph, bool drawHLines) {
 
 void Graph::resizeEvent(QResizeEvent *event) {
   QGraphicsView::resizeEvent(event);
-  redraw();
+  redrawTimer_.start();
 }
 
 void Graph::onRedraw(QGraphicsScene *) {
