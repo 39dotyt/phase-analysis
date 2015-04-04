@@ -40,3 +40,6 @@ DISTFILES +=
 
 RESOURCES += \
     resources.qrc
+
+TRANSLATIONS = i18n/en.ts \
+    i18n/ru.ts
