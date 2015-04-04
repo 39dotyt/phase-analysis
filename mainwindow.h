@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "changesgraph.h"
+#include "phasegraphwidget.h"
 
 namespace Ui {
  class MainWindow;
@@ -14,8 +16,16 @@ class MainWindow : public QMainWindow {
   explicit MainWindow(QWidget* parent = 0);
   ~MainWindow();
 
- private:
+private slots:
+  void on_actionLoadCsv_triggered();
+
+private:
   Ui::MainWindow* ui;
+  std::vector<PhaseGraphWidget*> phaseGraphWidgets_;
+  ChangesGraph* highsGraph_;
+  ChangesGraph* lowsGraph_;
+  ChangesGraph* squaresGraph_;
+  ChangesGraph* centersGraph_;
 };
 
 #endif // MAINWINDOW_H

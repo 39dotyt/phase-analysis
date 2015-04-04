@@ -21,8 +21,8 @@ class Graph : public QGraphicsView {
   quint32 yAxisMax_;
   bool drawHLines_;
  private:
-  static qreal calculateRealStep(const qreal& step);
-  void drawAxis(QGraphicsScene* scene);
+  static qreal calculateRealStep_(const qreal& step);
+  void drawAxis_(QGraphicsScene* scene);
   std::vector<QPointF> points_;
 };
 

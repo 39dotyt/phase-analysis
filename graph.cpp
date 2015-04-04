@@ -39,7 +39,7 @@ void Graph::resizeEvent(QResizeEvent *event) {
 void Graph::onRedraw(QGraphicsScene *) {
 }
 
-qreal Graph::calculateRealStep(const qreal &step) {
+qreal Graph::calculateRealStep_(const qreal &step) {
   if (step < 5) {
     return qFloor(step) + 1;
   } else if (step < 25) {
@@ -55,7 +55,7 @@ void Graph::redraw() {
   }
   QGraphicsScene* scene = new QGraphicsScene(this);
   scene->setSceneRect(0, 0, width(), height());
-  drawAxis(scene);
+  drawAxis_(scene);
   qreal widthDecimal = qreal(scene->width() - (2 * OFFSET)) / xAxisMax_;
   qreal heightDecimal = qreal(scene->height() - (2 * OFFSET)) / yAxisMax_;
   QPainterPath curve;
@@ -76,7 +76,7 @@ void Graph::redraw() {
   setScene(scene);
 }
 
-void Graph::drawAxis(QGraphicsScene* scene) {
+void Graph::drawAxis_(QGraphicsScene* scene) {
   scene->addLine(
         OFFSET, OFFSET,
         OFFSET, scene->height() - OFFSET);
@@ -88,7 +88,7 @@ void Graph::drawAxis(QGraphicsScene* scene) {
   quint8 lineHeight = NUMBER_HEIGHT + 8;
 
   quint16 yNumbersCount = yAxis / lineHeight;
-  qreal step = calculateRealStep(qreal(maxY_) / yNumbersCount);
+  qreal step = calculateRealStep_(qreal(maxY_) / yNumbersCount);
   yNumbersCount = (maxY_ / step) + 1;
   yAxisMax_ = yNumbersCount * step;
   qreal stepDifference = yAxis / yNumbersCount;
@@ -103,7 +103,7 @@ void Graph::drawAxis(QGraphicsScene* scene) {
   }
 
   quint16 xNumbersCount = xAxis / lineHeight;
-  step = calculateRealStep(qreal(maxX_) / xNumbersCount);
+  step = calculateRealStep_(qreal(maxX_) / xNumbersCount);
   xNumbersCount = (maxX_ / step) + 1;
   xAxisMax_ = xNumbersCount * step;
   stepDifference = xAxis / xNumbersCount;

@@ -4,7 +4,7 @@
 PhaseGraph::PhaseGraph(QWidget* parent)
     : Graph(parent),
       drawBorders_(true),
-      drawCenter_(true) {
+      drawDiagonals_(true) {
 }
 
 void PhaseGraph::draw(const std::vector<qreal>& data) {
@@ -39,21 +39,21 @@ QPointF PhaseGraph::center() {
 void PhaseGraph::drawBorders(bool draw) {
   drawBorders_ = draw;
   if (!drawBorders_) {
-    drawCenter_ = false;
+    drawDiagonals_ = false;
   }
   redraw();
 }
 
-void PhaseGraph::drawCenter(bool draw) {
-  drawCenter_ = draw;
-  if (drawCenter_) {
+void PhaseGraph::drawDiagonals(bool draw) {
+  drawDiagonals_ = draw;
+  if (drawDiagonals_) {
     drawBorders_ = true;
   }
   redraw();
 }
 
 void PhaseGraph::onRedraw(QGraphicsScene *scene) {
-  if (!drawBorders_ && !drawCenter_) {
+  if (!drawBorders_ && !drawDiagonals_) {
     return;
   }
   qreal widthDecimal = qreal(scene->width() - (2 * OFFSET)) / xAxisMax_;
@@ -63,7 +63,7 @@ void PhaseGraph::onRedraw(QGraphicsScene *scene) {
     scene->addRect(QRectF(QPointF(maxX_ * widthDecimal + OFFSET, scene->height() - (maxY_ * heightDecimal + OFFSET)),
                           QPointF(minX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET))), dashPen);
   }
-  if (drawCenter_) {
+  if (drawDiagonals_) {
     scene->addLine(maxX_ * widthDecimal + OFFSET, scene->height() - (maxY_ * heightDecimal + OFFSET),
                    minX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET), dashPen);
     scene->addLine(maxX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET),

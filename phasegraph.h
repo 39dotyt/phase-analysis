@@ -13,7 +13,7 @@ class PhaseGraph : public Graph {
   QPointF center();
  public slots:
   void drawBorders(bool draw = true);
-  void drawCenter(bool draw = true);
+  void drawDiagonals(bool draw = true);
  protected:
   void onRedraw(QGraphicsScene* scene);
  private:
@@ -23,7 +23,7 @@ class PhaseGraph : public Graph {
   qreal square_;
   QPointF center_;
   bool drawBorders_;
-  bool drawCenter_;
+  bool drawDiagonals_;
 };
 
 #endif // PHASEGRAPH_H

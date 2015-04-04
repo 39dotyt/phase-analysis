@@ -35,3 +35,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     phasegraphwidget.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    resources.qrc
