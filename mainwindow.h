@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "graph.h"
 #include "changesgraph.h"
 #include "phasegraphwidget.h"
 
@@ -26,6 +27,7 @@ private:
   ChangesGraph* lowsGraph_;
   ChangesGraph* squaresGraph_;
   ChangesGraph* centersGraph_;
+  Graph* trendGraph_;
 };
 
 #endif // MAINWINDOW_H

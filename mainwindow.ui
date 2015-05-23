@@ -84,6 +84,12 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6"/>
       </widget>
+      <widget class="QWidget" name="trend">
+       <attribute name="title">
+        <string>Process's Trend</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8"/>
+      </widget>
      </widget>
     </item>
    </layout>
