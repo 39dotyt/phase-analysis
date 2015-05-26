@@ -57,7 +57,8 @@ void Graph::redraw() {
     return;
   }
   QGraphicsScene* scene = new QGraphicsScene(this);
-  scene->setSceneRect(0, 0, width(), height());
+  scene->setSceneRect(
+        0, 0, width() - 2 * frameWidth(), height() - 2 * frameWidth());
   drawAxis_(scene);
   qreal widthDecimal = qreal(scene->width() - (2 * OFFSET)) / xAxisMax_;
   qreal heightDecimal = qreal(scene->height() - (2 * OFFSET)) / yAxisMax_;
