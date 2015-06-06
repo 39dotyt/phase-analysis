@@ -55,12 +55,14 @@ class PhaseGraphWidget : public QWidget {
  private:
   Ui::PhaseGraphWidget* ui;
   PhaseGraph* graph_;
+  QPushButton* bZoom_;
   Hoverable<QLabel>* lActions_;
   Hoverable<QFrame>* wActions_;
   QCheckBox* cbDrawBorders_;
   QCheckBox* cbDrawDiagonals_;
   QPixmap pxmCircleMoreDetail_;
   QPixmap pxmCircleBackArrow_;
+  QPixmap pxmEditorZoomIn_;
   std::function<void()> fnHideActions_;
   std::function<void()> fnStartHideTimeout_;
 };

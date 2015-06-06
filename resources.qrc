@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/circle_back_arrow-128.png</file>
-        <file>img/circle_more_detail-128.png</file>
+        <file>img/circle_more_detail-64.png</file>
+        <file>img/circle_back_arrow-64.png</file>
+        <file>img/editor_zoom-in-64.png</file>
     </qresource>
 </RCC>

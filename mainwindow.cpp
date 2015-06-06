@@ -108,5 +108,5 @@ void MainWindow::on_actionLoadCsv_triggered() {
   lowsGraph_->draw(lows);
   squaresGraph_->draw(squares);
   centersGraph_->draw(centers);
-  trendGraph_->draw(trend);
+  trendGraph_->draw(trend, false, true);
 }

@@ -7,25 +7,33 @@
 class Graph : public QGraphicsView {
  public:
   explicit Graph(QWidget* parent = 0);
-  void draw(const std::vector<QPointF>& graph, bool drawHLines = false);
+  void draw(const std::vector<QPointF>& graph, bool drawHLines = false,
+    bool scaled = false);
+  void scale(bool scale = true);
  protected:
   virtual void resizeEvent(QResizeEvent* event);
-  virtual void onRedraw(QGraphicsScene* scene);
+  virtual void onRedraw(
+      QGraphicsScene* scene,
+      const qreal& widthDecimal, const qreal& heightDecimal,
+      const qreal& realOffsetX, const qreal& realOffsetY);
   void redraw();
-  static const quint8 OFFSET = 45;
-  static const quint8 NUMBER_HEIGHT = 12;
   qreal maxX_;
   qreal maxY_;
   qreal minX_;
   qreal minY_;
-  quint32 xAxisMax_;
-  quint32 yAxisMax_;
   bool drawHLines_;
  private:
   static qreal calculateRealStep_(const qreal& step);
+  static quint32 calculateAxisStart_(const qreal& minAxis, const qreal& maxAxis);
   void drawAxis_(QGraphicsScene* scene);
+  static const quint8 OFFSET = 45;
+  static const quint8 NUMBER_HEIGHT = 12;
   QTimer redrawTimer_;
   std::vector<QPointF> points_;
+  quint32 xAxisMax_;
+  quint32 yAxisMax_;
+  quint32 xAxisStart_;
+  quint32 yAxisStart_;
 };
 
 #endif // GRAPH_H

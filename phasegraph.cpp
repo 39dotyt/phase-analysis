@@ -12,7 +12,7 @@ void PhaseGraph::draw(const std::vector<qreal>& data) {
   for (std::size_t i = 0; i < data.size() - 1; ++i) {
     points.push_back(QPointF(data[i], data[i + 1]));
   }
-  draw(points);
+  draw(points, false, true);
   max_ = std::max(maxX_, maxY_);
   min_ = std::min(minX_, minY_);
   square_ = (maxX_ - minX_) * (maxY_ - minY_);
@@ -52,21 +52,22 @@ void PhaseGraph::drawDiagonals(bool draw) {
   redraw();
 }
 
-void PhaseGraph::onRedraw(QGraphicsScene *scene) {
+void PhaseGraph::onRedraw(
+    QGraphicsScene *scene,
+    const qreal& widthDecimal, const qreal& heightDecimal,
+    const qreal& realOffsetX, const qreal& realOffsetY) {
   if (!drawBorders_ && !drawDiagonals_) {
     return;
   }
-  qreal widthDecimal = qreal(scene->width() - (2 * OFFSET)) / xAxisMax_;
-  qreal heightDecimal = qreal(scene->height() - (2 * OFFSET)) / yAxisMax_;
   QPen dashPen(Qt::DashLine);
   if (drawBorders_) {
-    scene->addRect(QRectF(QPointF(maxX_ * widthDecimal + OFFSET, scene->height() - (maxY_ * heightDecimal + OFFSET)),
-                          QPointF(minX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET))), dashPen);
+    scene->addRect(QRectF(QPointF(maxX_ * widthDecimal + realOffsetX, scene->height() - (maxY_ * heightDecimal + realOffsetY)),
+                          QPointF(minX_ * widthDecimal + realOffsetX, scene->height() - (minY_ * heightDecimal + realOffsetY))), dashPen);
   }
   if (drawDiagonals_) {
-    scene->addLine(maxX_ * widthDecimal + OFFSET, scene->height() - (maxY_ * heightDecimal + OFFSET),
-                   minX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET), dashPen);
-    scene->addLine(maxX_ * widthDecimal + OFFSET, scene->height() - (minY_ * heightDecimal + OFFSET),
-                   minX_ * widthDecimal + OFFSET, scene->height() - (maxY_ * heightDecimal + OFFSET), dashPen);
+    scene->addLine(maxX_ * widthDecimal + realOffsetX, scene->height() - (maxY_ * heightDecimal + realOffsetY),
+                   minX_ * widthDecimal + realOffsetX, scene->height() - (minY_ * heightDecimal + realOffsetY), dashPen);
+    scene->addLine(maxX_ * widthDecimal + realOffsetX, scene->height() - (minY_ * heightDecimal + realOffsetY),
+                   minX_ * widthDecimal + realOffsetX, scene->height() - (maxY_ * heightDecimal + realOffsetY), dashPen);
   }
 }

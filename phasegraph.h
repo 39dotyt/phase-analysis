@@ -15,7 +15,10 @@ class PhaseGraph : public Graph {
   void drawBorders(bool draw = true);
   void drawDiagonals(bool draw = true);
  protected:
-  void onRedraw(QGraphicsScene* scene);
+  void onRedraw(
+      QGraphicsScene *scene,
+      const qreal& widthDecimal, const qreal& heightDecimal,
+      const qreal& realOffsetX, const qreal& realOffsetY);
  private:
   using Graph::draw;
   qreal max_;

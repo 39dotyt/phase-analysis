@@ -8,18 +8,32 @@ PhaseGraphWidget::PhaseGraphWidget(QWidget* parent)
     : QWidget(parent),
       ui(new Ui::PhaseGraphWidget),
       graph_(new PhaseGraph(this)),
+      bZoom_(new QPushButton(this)),
       lActions_(new Hoverable<QLabel>(this)),
       wActions_(new Hoverable<QFrame>(this)),
       cbDrawBorders_(new QCheckBox(tr("Draw borders"), wActions_)),
       cbDrawDiagonals_(new QCheckBox(tr("Draw diagonals"), wActions_)),
-      pxmCircleMoreDetail_(QPixmap(":/img/circle_more_detail-128.png")
-                          .scaled(28, 28, Qt::KeepAspectRatio)),
-      pxmCircleBackArrow_(QPixmap(":/img/circle_back_arrow-128.png")
-                         .scaled(28, 28, Qt::KeepAspectRatio)) {
+      pxmCircleMoreDetail_(
+        QPixmap(":/img/circle_more_detail-64.png")
+        .scaled(28, 28, Qt::KeepAspectRatio, Qt::SmoothTransformation)),
+      pxmCircleBackArrow_(
+        QPixmap(":/img/circle_back_arrow-64.png")
+        .scaled(28, 28, Qt::KeepAspectRatio, Qt::SmoothTransformation)),
+      pxmEditorZoomIn_(
+        QPixmap(":/img/editor_zoom-in-64.png")
+        .scaled(28, 28, Qt::KeepAspectRatio, Qt::SmoothTransformation)) {
   ui->setupUi(this);
 
   QGridLayout* l = static_cast<QGridLayout*>(layout());
   l->addWidget(graph_, 0, 1);
+
+  bZoom_->setFlat(true);
+  bZoom_->setCheckable(true);
+  bZoom_->setChecked(true);
+  bZoom_->setIcon(pxmEditorZoomIn_);
+  bZoom_->setMaximumSize(28, 28);
+  ui->infoLayout->addWidget(bZoom_);
+
   lActions_->setPixmap(pxmCircleMoreDetail_);
   ui->infoLayout->addWidget(lActions_);
 
@@ -88,6 +102,10 @@ PhaseGraphWidget::PhaseGraphWidget(QWidget* parent)
     } else {
       fnStartHideTimeout_();
     }
+  });
+
+  QObject::connect(bZoom_, &QPushButton::clicked, [this] (bool checked) {
+    graph_->scale(checked);
   });
 }
 
