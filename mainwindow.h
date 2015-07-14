@@ -20,6 +20,8 @@ class MainWindow : public QMainWindow {
 private slots:
   void on_actionLoadCsv_triggered();
 
+  void on_actionExportCsv_triggered();
+
 private:
   Ui::MainWindow* ui;
   std::vector<PhaseGraphWidget*> phaseGraphWidgets_;

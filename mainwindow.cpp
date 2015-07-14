@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget* parent)
   ui->squares->layout()->addWidget(squaresGraph_);
   ui->centers->layout()->addWidget(centersGraph_);
   ui->trend->layout()->addWidget(trendGraph_);
+  ui->actionExportCsv->setDisabled(true);
 }
 
 MainWindow::~MainWindow() {
@@ -34,9 +35,7 @@ void MainWindow::on_actionLoadCsv_triggered() {
         this, tr("Select data file"),
         QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
         tr("Data files (*.csv)"));
-  if (fileName.isEmpty()) {
-    return;
-  }
+  if (fileName.isEmpty()) return;
   QFile file(fileName);
   if (!file.open(QIODevice::ReadOnly)) {
     QMessageBox::critical(this, tr("Error loading file"), file.errorString());
@@ -45,7 +44,7 @@ void MainWindow::on_actionLoadCsv_triggered() {
   if (in.atEnd()) {
     QMessageBox::critical(this, tr("Error loading file"), tr("File is empty"));
   }
-  QString setup = file.readLine();
+  QString setup = in.readLine();
   std::vector<std::size_t> phaseLengths;
   bool ok;
   if ('"' == setup[0]) {
@@ -109,4 +108,25 @@ void MainWindow::on_actionLoadCsv_triggered() {
   squaresGraph_->draw(squares);
   centersGraph_->draw(centers);
   trendGraph_->draw(trend, false, true);
+  ui->actionExportCsv->setEnabled(true);
+}
+
+void MainWindow::on_actionExportCsv_triggered() {
+  QString fileName = QFileDialog::getSaveFileName(
+        this, tr("Select file to export"),
+        QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation),
+        tr("Data files (*.csv)"));
+  if (fileName.isEmpty()) return;
+  QFile file(fileName);
+  if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+    QMessageBox::critical(this, tr("Error opening file for writing"), file.errorString());
+  }
+  QTextStream out(&file);
+  for (PhaseGraphWidget* widget : phaseGraphWidgets_) {
+    PhaseGraph* graph = widget->graph();
+    out << "\"" << "high, low" << "\"," << graph->max() << "," << graph->min() << "\n";
+    out << "square" << "," << graph->square() << "\n";
+    const QPointF& center = graph->center();
+    out << "center" << "," << center.x() << "," << center.y() << "\n\n";
+  }
 }

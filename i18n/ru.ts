@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ru" sourcelanguage="en">
+<TS version="2.1" language="ru" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
@@ -44,45 +44,77 @@
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="117"/>
+        <location filename="../mainwindow.ui" line="118"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="129"/>
+        <location filename="../mainwindow.ui" line="131"/>
         <source>&amp;Load CSV</source>
         <translation>&amp;Загрузить CSV</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="34"/>
+        <location filename="../mainwindow.ui" line="136"/>
+        <source>&amp;Export CSV</source>
+        <translation>&amp;Экспортировать CSV</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="35"/>
         <source>Select data file</source>
         <translation>Выберите файл данных</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="36"/>
+        <location filename="../mainwindow.cpp" line="37"/>
+        <location filename="../mainwindow.cpp" line="118"/>
         <source>Data files (*.csv)</source>
         <translation>Файлы данных (*.csv)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="42"/>
-        <location filename="../mainwindow.cpp" line="46"/>
-        <location filename="../mainwindow.cpp" line="57"/>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="41"/>
+        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Error loading file</source>
         <translation>Ошибка загрузки файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="46"/>
+        <location filename="../mainwindow.cpp" line="45"/>
         <source>File is empty</source>
         <translation>Файл пуст</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="57"/>
-        <location filename="../mainwindow.cpp" line="64"/>
-        <location filename="../mainwindow.cpp" line="78"/>
+        <location filename="../mainwindow.cpp" line="56"/>
+        <location filename="../mainwindow.cpp" line="63"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Invalid file format</source>
         <translation>Некорректный формат файла</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="116"/>
+        <source>Select file to export</source>
+        <translation>Укажите файл для экспорта</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="122"/>
+        <source>Error opening file for writing</source>
+        <translation>Ошибка открытия файла на запись</translation>
+    </message>
+    <message>
+        <source>high, low</source>
+        <translation type="vanished">макс, мин</translation>
+    </message>
+    <message>
+        <source>max, min</source>
+        <translation type="vanished">макс, мин</translation>
+    </message>
+    <message>
+        <source>square</source>
+        <translation type="vanished">площадь</translation>
+    </message>
+    <message>
+        <source>center</source>
+        <translation type="vanished">центр</translation>
     </message>
 </context>
 <context>
@@ -133,12 +165,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../phasegraphwidget.cpp" line="13"/>
+        <location filename="../phasegraphwidget.cpp" line="14"/>
         <source>Draw borders</source>
         <translation>Рисовать границы</translation>
     </message>
     <message>
-        <location filename="../phasegraphwidget.cpp" line="14"/>
+        <location filename="../phasegraphwidget.cpp" line="15"/>
         <source>Draw diagonals</source>
         <translation>Рисовать диагонали</translation>
     </message>

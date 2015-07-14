@@ -108,6 +108,7 @@
      <string>&amp;File</string>
     </property>
     <addaction name="actionLoadCsv"/>
+    <addaction name="actionExportCsv"/>
    </widget>
    <addaction name="menu_File"/>
   </widget>
@@ -123,10 +124,16 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionLoadCsv"/>
+   <addaction name="actionExportCsv"/>
   </widget>
   <action name="actionLoadCsv">
    <property name="text">
     <string>&amp;Load CSV</string>
+   </property>
+  </action>
+  <action name="actionExportCsv">
+   <property name="text">
+    <string>&amp;Export CSV</string>
    </property>
   </action>
  </widget>
