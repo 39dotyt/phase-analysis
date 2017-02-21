@@ -48,6 +48,22 @@ void Graph::scale(bool scale) {
   redraw();
 }
 
+qreal Graph::maxX(){
+    return maxX_;
+}
+
+qreal Graph::maxY(){
+    return maxY_;
+}
+
+qreal Graph::minX(){
+    return minX_;
+}
+
+qreal Graph::minY(){
+    return minY_;
+}
+
 void Graph::resizeEvent(QResizeEvent *event) {
   QGraphicsView::resizeEvent(event);
   redrawTimer_.start();

@@ -124,7 +124,9 @@ void MainWindow::on_actionExportCsv_triggered() {
   QTextStream out(&file);
   for (PhaseGraphWidget* widget : phaseGraphWidgets_) {
     PhaseGraph* graph = widget->graph();
-    out << "\"" << "high, low" << "\"," << graph->max() << "," << graph->min() << "\n";
+    out << "\"" << "maxX, maxY" << "\"," << graph->maxX() << "," << graph->maxY() << "\n";
+    out << "\"" << "minX, minY" << "\"," << graph->minX() << "," << graph->minY() << "\n";
+    out << "\"" << "max, min" << "\"," << graph->max() << "," << graph->min() << "\n";
     out << "square" << "," << graph->square() << "\n";
     const QPointF& center = graph->center();
     out << "center" << "," << center.x() << "," << center.y() << "\n\n";

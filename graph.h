@@ -10,6 +10,10 @@ class Graph : public QGraphicsView {
   void draw(const std::vector<QPointF>& graph, bool drawHLines = false,
     bool scaled = false);
   void scale(bool scale = true);
+  qreal maxX();
+  qreal maxY();
+  qreal minX();
+  qreal minY();
  protected:
   virtual void resizeEvent(QResizeEvent* event);
   virtual void onRedraw(
