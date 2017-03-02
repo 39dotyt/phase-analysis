@@ -125,7 +125,7 @@ void MainWindow::on_actionExportCsv_triggered() {
     QMessageBox::critical(this, tr("Error opening file for writing"), file.errorString());
   }
   QTextStream out(&file);
-  QChar separator = QSettings().value("separator", ',').toChar();
+  QChar separator = QSettings().value("separator", ';').toChar();
   for (PhaseGraphWidget* widget : phaseGraphWidgets_) {
     PhaseGraph* graph = widget->graph();
     out << "\"maxX, maxY\"" << separator << graph->maxX() << separator << graph->maxY() << "\n";
