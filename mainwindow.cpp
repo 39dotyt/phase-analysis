@@ -47,8 +47,10 @@ void MainWindow::on_actionLoadCsv_triggered() {
   QString setup = in.readLine();
   std::vector<std::size_t> phaseLengths;
   bool ok;
-  if ('"' == setup[0]) {
-    setup = setup.section('"', 1, 1);
+  if (setup.contains(',')) {
+    if ('"' == setup[0]) {
+        setup = setup.section('"', 1, 1);
+    }
     QStringList setupSplitted = setup.split(',');
     for (QString setupEntry : setupSplitted) {
       phaseLengths.push_back(setupEntry.toInt(&ok));
