@@ -4,6 +4,7 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QSettings>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent),
@@ -124,13 +125,14 @@ void MainWindow::on_actionExportCsv_triggered() {
     QMessageBox::critical(this, tr("Error opening file for writing"), file.errorString());
   }
   QTextStream out(&file);
+  QChar separator = QSettings().value("separator", ',').toChar();
   for (PhaseGraphWidget* widget : phaseGraphWidgets_) {
     PhaseGraph* graph = widget->graph();
-    out << "\"maxX, maxY\"," << graph->maxX() << "," << graph->maxY() << "\n";
-    out << "\"minX, minY\"," << graph->minX() << "," << graph->minY() << "\n";
-    out << "\"max, min\"," << graph->max() << "," << graph->min() << "\n";
-    out << "square," << graph->square() << "\n";
+    out << "\"maxX, maxY\"" << separator << graph->maxX() << separator << graph->maxY() << "\n";
+    out << "\"minX, minY\"" << separator << graph->minX() << separator << graph->minY() << "\n";
+    out << "\"max, min\"" << separator << graph->max() << separator << graph->min() << "\n";
+    out << "square" << separator << graph->square() << "\n";
     const QPointF& center = graph->center();
-    out << "center," << center.x() << "," << center.y() << "\n\n";
+    out << "center" << separator << center.x() << separator << center.y() << "\n\n";
   }
 }
