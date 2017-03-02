@@ -54,14 +54,14 @@ void MainWindow::on_actionLoadCsv_triggered() {
     }
     QStringList setupSplitted = setup.split(',');
     for (QString setupEntry : setupSplitted) {
-      phaseLengths.push_back(setupEntry.toInt(&ok));
+      phaseLengths.push_back(std::size_t(setupEntry.toInt(&ok)));
       if (!ok) {
         QMessageBox::critical(this, tr("Error loading file"), tr("Invalid file format"));
         return;
       }
     }
   } else {
-    phaseLengths.push_back(setup.toInt(&ok));
+    phaseLengths.push_back(std::size_t(setup.toInt(&ok)));
     if (!ok) {
       QMessageBox::critical(this, tr("Error loading file"), tr("Invalid file format"));
       return;

@@ -121,11 +121,11 @@ void PhaseGraphWidget::draw(const std::vector<qreal>& data) {
   ui->pointsLayout->addWidget(new QLabel("...", this), 0, 0);
   ui->pointsLayout->addWidget(new QLabel(QString::number(data[0]), this), 0, 1);
   for (std::size_t i = 0; i < data.size() - 1; ++i) {
-    ui->pointsLayout->addWidget(new QLabel(QString::number(data[i]), this), i + 1, 0);
-    ui->pointsLayout->addWidget(new QLabel(QString::number(data[i + 1]), this), i + 1, 1);
+    ui->pointsLayout->addWidget(new QLabel(QString::number(data[i]), this), int(i + 1), 0);
+    ui->pointsLayout->addWidget(new QLabel(QString::number(data[i + 1]), this), int(i + 1), 1);
   }
-  ui->pointsLayout->addWidget(new QLabel(QString::number(data[data.size() - 1]), this), data.size(), 0);
-  ui->pointsLayout->addWidget(new QLabel("...", this), data.size(), 1);
+  ui->pointsLayout->addWidget(new QLabel(QString::number(data[data.size() - 1]), this), int(data.size()), 0);
+  ui->pointsLayout->addWidget(new QLabel("...", this), int(data.size()), 1);
   graph_->draw(data);
   ui->lMax->setText(QString::number(graph_->max()));
   ui->lMin->setText(QString::number(graph_->min()));

@@ -85,7 +85,7 @@ qreal Graph::calculateRealStep_(const qreal &step) {
 
 quint32 Graph::calculateAxisStart_(const qreal &minAxis, const qreal& maxAxis) {
   qreal minimalOffset = (maxAxis - minAxis) * 0.03;
-  return qFloor(minAxis) - qCeil(minimalOffset);
+  return quint32(qFloor(minAxis) - qCeil(minimalOffset));
 }
 
 void Graph::redraw() {
@@ -129,11 +129,11 @@ void Graph::drawAxis_(QGraphicsScene* scene) {
   qreal yAxis = scene->height() - (2 * OFFSET);
   quint8 lineHeight = NUMBER_HEIGHT + 8;
 
-  quint16 yNumbersCount = yAxis / lineHeight;
+  quint16 yNumbersCount = quint16(yAxis / lineHeight);
   qreal maxYReal = maxY_ - yAxisStart_;
   qreal step = calculateRealStep_(maxYReal / yNumbersCount);
-  yNumbersCount = (maxYReal / step) + 1;
-  yAxisMax_ = yNumbersCount * step;
+  yNumbersCount = quint16(maxYReal / step) + 1;
+  yAxisMax_ = quint16(yNumbersCount * step);
   qreal stepDifference = yAxis / yNumbersCount;
   for (quint16 i = 0; i <= yNumbersCount; ++i) {
     qreal yPos = scene->height() - (OFFSET + stepDifference * i);
@@ -145,11 +145,11 @@ void Graph::drawAxis_(QGraphicsScene* scene) {
     scene->addItem(label);
   }
 
-  quint16 xNumbersCount = xAxis / lineHeight;
+  quint16 xNumbersCount = quint16(xAxis / lineHeight);
   qreal maxXReal = maxX_ - xAxisStart_;
   step = calculateRealStep_(maxXReal / xNumbersCount);
-  xNumbersCount = (maxXReal / step) + 1;
-  xAxisMax_ = xNumbersCount * step;
+  xNumbersCount = quint16(maxXReal / step) + 1;
+  xAxisMax_ = quint32(xNumbersCount * step);
   stepDifference = xAxis / xNumbersCount;
   for (quint16 i = 0; i <= xNumbersCount; ++i) {
     qreal xPos = OFFSET + stepDifference * i;
