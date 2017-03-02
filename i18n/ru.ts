@@ -44,59 +44,69 @@
         <translation>&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="118"/>
+        <location filename="../mainwindow.ui" line="120"/>
         <source>toolBar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="131"/>
+        <location filename="../mainwindow.ui" line="133"/>
         <source>&amp;Load CSV</source>
         <translation>&amp;Загрузить CSV</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="136"/>
+        <location filename="../mainwindow.ui" line="138"/>
         <source>&amp;Export CSV</source>
         <translation>&amp;Экспортировать CSV</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="35"/>
+        <location filename="../mainwindow.ui" line="143"/>
+        <source>&amp;Quit</source>
+        <translation>&amp;Выйти</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="146"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="36"/>
         <source>Select data file</source>
         <translation>Выберите файл данных</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="37"/>
-        <location filename="../mainwindow.cpp" line="118"/>
+        <location filename="../mainwindow.cpp" line="38"/>
+        <location filename="../mainwindow.cpp" line="121"/>
         <source>Data files (*.csv)</source>
         <translation>Файлы данных (*.csv)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="41"/>
-        <location filename="../mainwindow.cpp" line="45"/>
-        <location filename="../mainwindow.cpp" line="56"/>
-        <location filename="../mainwindow.cpp" line="63"/>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="42"/>
+        <location filename="../mainwindow.cpp" line="46"/>
+        <location filename="../mainwindow.cpp" line="59"/>
+        <location filename="../mainwindow.cpp" line="66"/>
+        <location filename="../mainwindow.cpp" line="80"/>
         <source>Error loading file</source>
         <translation>Ошибка загрузки файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="45"/>
+        <location filename="../mainwindow.cpp" line="46"/>
         <source>File is empty</source>
         <translation>Файл пуст</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="56"/>
-        <location filename="../mainwindow.cpp" line="63"/>
-        <location filename="../mainwindow.cpp" line="77"/>
+        <location filename="../mainwindow.cpp" line="59"/>
+        <location filename="../mainwindow.cpp" line="66"/>
+        <location filename="../mainwindow.cpp" line="80"/>
         <source>Invalid file format</source>
         <translation>Некорректный формат файла</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="116"/>
+        <location filename="../mainwindow.cpp" line="119"/>
         <source>Select file to export</source>
         <translation>Укажите файл для экспорта</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="122"/>
+        <location filename="../mainwindow.cpp" line="125"/>
         <source>Error opening file for writing</source>
         <translation>Ошибка открытия файла на запись</translation>
     </message>
